@@ -3,9 +3,9 @@ import sqlalchemy
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 
-engine = sqlalchemy.create_engine('postgresql://postgres:postgres@localhost:5432/Carford')
+engine = sqlalchemy.create_engine('postgresql://postgres:postgres@localhost:5432/CarFord')
 
 Base = declarative_base()
 
 Session = sessionmaker(bind=engine)
-session = Session
+session = Session()
