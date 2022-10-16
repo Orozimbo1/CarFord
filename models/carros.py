@@ -1,3 +1,4 @@
+from ast import Str
 from database import Base, engine, session
 from sqlalchemy import Column, String, Integer, ForeignKey
 from models.modelo import ModeloModel
@@ -9,15 +10,15 @@ class CarroModel(Base):
 
     carro_id = Column(Integer, primary_key=True)
     nome_carro = Column(String(80))
-    modelo_id = Column(Integer, ForeignKey(ModeloModel.modelo_id))
-    cor_id = Column(Integer, ForeignKey(CorModel.cor_id))
+    modelo_carro = Column(String, ForeignKey(ModeloModel.nome_modelo))
+    cor_carro = Column(String, ForeignKey(CorModel.nome_cor))
     ano = Column(Integer)
     proprietario_id = Column(Integer, ForeignKey(ProprietarioModel.proprietario_id))    
 
-    def __init__(self, nome_carro, modelo_id, cor_id, ano, proprietario_id):
+    def __init__(self, nome_carro, modelo_carro, cor_carro, ano, proprietario_id):
         self.nome_carro = nome_carro
-        self.modelo_id = modelo_id
-        self.cor_id = cor_id
+        self.modelo_carro = modelo_carro
+        self.cor_carro = cor_carro
         self.ano = ano
         self.proprietario_id = proprietario_id
     
@@ -25,8 +26,8 @@ class CarroModel(Base):
         return {
             'carro_id': self.carro_id,
             'nome_carro': self.nome_carro,
-            'modelo_id': self.modelo_id,
-            'cor_id': self.cor_id,
+            'modelo_carro': self.modelo_carro,
+            'cor_carro': self.cor_carro,
             'ano': self.ano,
             'proprietario_id': self.proprietario_id
         }
@@ -45,11 +46,17 @@ class CarroModel(Base):
         if carro:
             return carro
         return None
+
+    @classmethod
+    def buscar_carros_por_usuario(cls, proprietario_id):
+        resultado = session.query(CarroModel).filter_by(proprietario_id=proprietario_id).all()
+        carros = [carro.json() for carro in resultado]
+        return carros
     
-    def atualizar_carro(self, nome_carro, modelo_id, cor_id, ano, proprietario_id):
+    def atualizar_carro(self, nome_carro, modelo_carro, cor_carro, ano, proprietario_id):
         self.nome_carro = nome_carro
-        self.modelo_id = modelo_id
-        self.cor_id = cor_id
+        self.modelo_carro = modelo_carro
+        self.cor_carro = cor_carro
         self.ano = ano
         self.proprietario_id = proprietario_id
 

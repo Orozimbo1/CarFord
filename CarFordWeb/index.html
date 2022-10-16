@@ -33,64 +33,60 @@
         <div class="mt-3">
             <main class="col-7 m-auto">
                 <div class="card text-center">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item col-3 topicos">
-                            <a class="nav-link active" id="proprietarios"  aria-current="true" href="#">Proprietários</a>
-                        </li>
-                        <li class="nav-item col-3 topicos" id="carros">
-                            <a class="nav-link" href="#">Carros</a>
-                        </li>
-                        <li class="nav-item col-3 topicos" href="#" id="cadastroProprietario">
-                            <a class="nav-link ">Cadastre-se</a>
-                        </li>
-                        <li class="nav-item col-3 topicos" id="cadastroCarro">
-                            <a class="nav-link ">Cadastrar carro</a>
-                        </li>
-                        </ul>
+                    <div class="shadow-sm col-12 pb-5">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="m-5">Proprietários</h1>
+                        </div>
+                        <div class="flex-wrap d-flex justify-content-around" id="cardUsuario">
+                        </div> 
+                    </div> 
+                    <div class="shadow-sm col-12 pb-5">
+                        <div class="d-flex justify-content-center ">
+                            <h1 class="m-5">Carros</h1>
+                        </div>
+                        <div class="col-11 m-auto d-flex flex-wrap " id="cardCarro">    
+                        </div>
                     </div>
-                    <div class="conteudo" id="formProprietario">
-                        <h1 class="m-3">Cadastre-se</h1>
+                    <div class="conteudo shadow-sm" id="formProprietario">
+                        <h1 class="m-5">Cadastre-se</h1>
                         <div class="col-6 m-auto mb-5">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Digite seu nome:">
+                                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome:">
                                 <label for="floatingInput">Digite seu nome:</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingPassword" placeholder="Sobrenome:">
+                                <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome:">
                                 <label for="floatingPassword">Sobrenome</label>
                             </div>
-                            <button type="submit" class="btn btn-primary col-12">Enviar</button>
+                            <button type="submit" id="btn-prop" class="btn btn-primary col-12">Enviar</button>
                         </div>
                     </div>
-                    <div class="conteudo" id="formCarro">
-                        <h1 class="m-3">Cadastrar carro</h1>
+                    <div class="conteudo shadow-sm" id="formCarro">
+                        <h1 class="m-5">Cadastrar carro</h1>
                         <div class="col-6 m-auto mb-5">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Nome do carro:">
+                                <input type="text" class="form-control" id="nome_carro" placeholder="Nome do carro:">
                                 <label for="floatingInput">Nome do carro:</label>
                             </div>
                             <div class="mb-3 ">
-                                <select id="inputState" class="form-select">
+                                <select id="modelo_carro" class="form-select">
                                   <option selected>Modelo:</option>
-                                  <option>...</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <select id="inputState" class="form-select">
+                                <select id="cor_carro" class="form-select">
                                   <option selected>Cor:</option>
-                                  <option>...</option>
                                 </select>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingPassword" placeholder="Ano:">
+                                <input type="text" class="form-control" id="ano_carro" placeholder="Ano:">
                                 <label for="floatingPassword">Ano:</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingPassword" placeholder="Proprietário:">
+                                <input type="text" class="form-control" id="proprietario_carro" placeholder="Proprietário:">
                                 <label for="floatingPassword">Propietário:</label>
                             </div>
-                            <button type="submit" class="aoba btn btn-primary col-12">Enviar</button>
+                            <button type="submit" id="btn-carro" class="btn btn-primary col-12">Enviar</button>
                         </div>
                     </div>
                 </div>

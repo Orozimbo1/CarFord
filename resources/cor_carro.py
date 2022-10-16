@@ -3,12 +3,13 @@ from models.cor_carro import CorModel
 
 
 argumentos = reqparse.RequestParser()
+argumentos.add_argument('cor_id', type=int, required=True, help="O campo 'cor_id' não pode ser deixado em branco.")
 argumentos.add_argument('nome_cor', type=str, required=True, help="O campo 'nome_cor' não pode ser deixado em branco.")
 
 class Cores(Resource):
 
     def get(self):
-        cores = CorModel.buscar_todas_cores
+        cores = CorModel.buscar_todas_cores()
         return cores
 
 class Cor(Resource):

@@ -4,8 +4,7 @@ from sqlalchemy import Column, String, Integer
 class ModeloModel(Base):
     __tablename__ = 'modelos'
 
-    modelo_id = Column(Integer, primary_key=True)
-    nome_modelo = Column(String(80))
+    nome_modelo = Column(String(80), primary_key=True)
     
 
     def __init__(self, nome_modelo):
@@ -13,7 +12,6 @@ class ModeloModel(Base):
     
     def json(self):
         return {
-            'modelo_id': self.modelo_id,
             'nome_modelo': self.nome_modelo
         }
     
@@ -25,8 +23,8 @@ class ModeloModel(Base):
         return modelos
 
     @classmethod
-    def buscar_modelo(cls, modelo_id):
-        modelo = session.query(ModeloModel).filter_by(modelo_id=modelo_id).first()
+    def buscar_modelo(cls, nome_modelo):
+        modelo = session.query(ModeloModel).filter_by(nome_modelo=nome_modelo).first()
 
         if modelo:
             return modelo

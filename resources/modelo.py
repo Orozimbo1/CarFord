@@ -13,18 +13,18 @@ class Modelos(Resource):
 
 class Modelo(Resource):
 
-    def get(self, modelo_id):
+    def get(self, nome_modelo):
         
-        modelo = ModeloModel.buscar_modelo(modelo_id)
+        modelo = ModeloModel.buscar_modelo(nome_modelo)
         if modelo:
             return modelo.json()
         return {'mensagem': 'Modelo não encontrado.'}, 404
 
-    def put(self, modelo_id):
+    def put(self, nome_modelo):
         
         dados = argumentos.parse_args()
 
-        modelo_encontrado = ModeloModel.buscar_modelo(modelo_id)
+        modelo_encontrado = ModeloModel.buscar_modelo(nome_modelo)
         if modelo_encontrado:
             try:
                 modelo_encontrado.atualizar_modelo(**dados)
@@ -33,8 +33,8 @@ class Modelo(Resource):
                 return {'mensagem': 'Houve um erro tentando atualizar o modelo.'}, 500
             return modelo_encontrado.json(), 200
 
-    def delete(self, modelo_id):
-        modelo = ModeloModel.buscar_modelo(modelo_id)
+    def delete(self, nome_modelo):
+        modelo = ModeloModel.buscar_modelo(nome_modelo)
 
         if modelo:
             try:
@@ -50,6 +50,7 @@ class ModeloCadastro(Resource):
 
         dados = argumentos.parse_args()
         modelo = ModeloModel(**dados)
+        modelo.salvar_modelo()
         try:
             modelo.salvar_modelo()
         except:

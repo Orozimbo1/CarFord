@@ -1,15 +1,16 @@
-from database import Base, Session, engine, session
+from database import Base, engine, session
 from sqlalchemy import Column, String, Integer
 
 class CorModel(Base):
     __tablename__ = 'cores'
 
-    cor_id = Column(Integer, primary_key=True)
-    nome_cor = Column(String(80))
+    cor_id = Column(Integer)
+    nome_cor = Column(String(80), primary_key=True)
     
 
-    def __init__(self, nome_cor):
+    def __init__(self, nome_cor, cor_id):
         self.nome_cor = nome_cor
+        self.cor_id = cor_id
     
     def json(self):
         return {
