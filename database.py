@@ -1,10 +1,13 @@
+import dotenv
+import os
 from lib2to3.pytree import Base
 import sqlalchemy
 from sqlalchemy import text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+dotenv.load_dotenv(dotenv.find_dotenv())
 
-engine = sqlalchemy.create_engine('postgresql://postgres:postgres@localhost:5432/CarFord')
+engine = sqlalchemy.create_engine('postgresql://{}:{}@{}:{}/{}'.format(os.getenv("USUARIO"),os.getenv("SENHA"), os.getenv("HOST"), os.getenv("PORT"), os.getenv("DB_NAME")))
 
 Base = declarative_base()
 
