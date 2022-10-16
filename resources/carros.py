@@ -61,10 +61,13 @@ class CarroCadastro(Resource):
             if qtd_carro < 3:
                 try:
                     carro.salvar_carro()
-                    if qtd_carro == 2:
-                        return {"mensagem": "O proprietário atingiu o limite de carros."}, 400
                 except:
                     return {"mensagem":"Ocorreu um erro interno"}, 500
-                return carro.json()
-            return {"mensagem": "O proprietário atingiu o limite de carros."}, 408
+                if qtd_carro == 0:
+                    return ({"menssagem":"Voce cadastrou{}".format(carro.json())},{"mensagem": "Voce pode cadastrar mais 2 carros."}), 201
+                if qtd_carro == 1:
+                    return ({"menssagem":"Voce cadastrou{}".format(carro.json())},{"mensagem": "Voce só pode cadastrar mais 1 carro."}), 201
+                if qtd_carro == 2:
+                    return ({"menssagem":"Voce cadastrou{}".format(carro.json())},{"mensagem": "Voce nao pode mais cadastrar carros."}), 201
+            return {"mensagem": "Voce atingiu o limite de carros."}, 400
         return {"mensagem": "Esse proprietario não existe. Por favor insira um 'id' válido."}

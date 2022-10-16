@@ -1,9 +1,13 @@
 FROM python:3
 
-COPY . /app
+WORKDIR /user/app
 
-RUN pip install requirements.txt
+COPY requirements.txt ./
 
-WORKDIR /app
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
 
 CMD [ "python", "app.py" ]

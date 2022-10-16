@@ -124,7 +124,6 @@ function app() {
     }
 
     function apiCores() {
-        // Consumindo api cores
         let url = 'http://127.0.0.1:5000/cores'
 
         const options = {
@@ -163,7 +162,8 @@ function app() {
 
         request.onload = function () {
 
-            console.log(this.responseText)
+            alert(this.responseText)
+            window.location.reload()
         }
         return request.responseText
     }
@@ -176,7 +176,6 @@ function app() {
         let nome_carro = document.querySelector("#nome_carro").value
         let ano_carro = document.querySelector("#ano_carro").value
         let proprietario_carro = document.querySelector("#proprietario_carro").value
-        console.log(nome_carro, ano_carro, proprietario_carro)
 
         body = {
             "nome_carro": nome_carro,
@@ -192,7 +191,8 @@ function app() {
         request.send(JSON.stringify(body))
 
         request.onload = function () {
-            console.log(this.responseText)
+            alert(this.responseText)
+            window.location.reload()
 
         }
         return request.responseText
